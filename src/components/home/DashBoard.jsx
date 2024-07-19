@@ -91,44 +91,50 @@ const DashBoard = () => {
   };
 
   return (
-    <div className={styles.bg_dashboard}>
-      <div className={styles.container}>
-        <h1>WebGame</h1>
-        <button className={styles.create_game_btn} onClick={handleCreateGame}>
-          <i className="fas fa-gamepad"></i> CREATE GAME
-        </button>
-        <br />
-        <div className={styles.roomClass}>
-          <input
-            type="text"
-            id="room-code"
-            placeholder="Enter room code"
-            className={styles.inputRoomCode} // Sử dụng camelCase cho tên class
-          />
-          <button className={styles.join_game_btn} onClick={handleJoinGame}>
-            <i className="fas fa-user"></i> Join
+    <div className={styles.containerfullwidth}>
+      <div className={styles.bg_dashboard}>
+        <div className={styles.container}>
+          <h1>WebGame</h1>
+          <button className={styles.create_game_btn} onClick={handleCreateGame}>
+            <i className="fas fa-gamepad"></i> CREATE GAME
           </button>
+          <br />
+          <div className={styles.roomClass}>
+            <input
+              type="text"
+              id="room-code"
+              placeholder="Enter room code"
+              className={styles.inputRoomCode} // Sử dụng camelCase cho tên class
+            />
+            <button className={styles.join_game_btn} onClick={handleJoinGame}>
+              <i className="fas fa-user"></i> Join
+            </button>
+          </div>
         </div>
-      </div><br />
-      <div className={styles.hostroom}>
-        <h1>Created Rooms</h1>
-        <ul>
-          {HostRoom.map((room) => (
-            <li key={room.roomid} onClick={() => handleJoin(room.roomid)}>
-              {room.roomid}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={styles.joinroom}>
-        <h1>Joined Rooms</h1>
-        <ul>
-          {JoinRoom.map((room) => (
-            <li key={room.roomid} onClick={() => handleJoin(room.roomid)}>
-              {room.roomid}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.hostroom}>
+          <h1>Created Rooms</h1>
+          <div className={styles.scrollableList}>
+            <ul>
+              {HostRoom.map((room) => (
+                <li key={room.roomid} onClick={() => handleJoin(room.roomid)}>
+                  {room.roomid}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className={styles.joinroom}>
+          <h1>Joined Rooms</h1>
+          <div className={styles.scrollableList}>
+            <ul>
+              {JoinRoom.map((room) => (
+                <li key={room.roomid} onClick={() => handleJoin(room.roomid)}>
+                  {room.roomid}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

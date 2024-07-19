@@ -1,129 +1,170 @@
+.containerfullwidth {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
 .bg_dashboard {
-  position: fixed; /* Fixed/sticky position */
-  top: 0; /* Place the button at the top of the page */
-  left: 0; /* Place the button at the start of the page */
-  right: 0; /* Stretch the button to the end of the page */
-  bottom: 0; /* Stretch the button to the bottom of the page */
-  background-image: url("../../../public/images/bg_dashboard.jpg"); /* Add your background image */
-  background-size: cover; /* Make the image cover the whole div */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-y: auto; /* Enable scrolling if content overflows */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 375px;
+    height: 670px;
+    max-height: 90vh;
+    max-width: auto;
+    margin: 0;
+    background-image: url("../../../public/images/bg_dashboard.jpg");
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    /* Enable scrolling if content overflows */
 }
 
 .container {
-  position: relative;
-  top: 20px; /* Adjusted to position at the top */
-  background-color: rgba(0, 0, 0, 0.5); /* Background transparency */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 75vw;
-  max-width: 500px;
-  margin: 20px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Background transparency */
+    top: 0px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 375px;
+    max-width: 500px;
+    
+    text-align: center;
+    /* Center-align text inside the container */
+}
+.container h1{
+    color: #fff;
 }
 
-h1 {
-  color: #fff;
-  text-align: center;
+.create_game_btn,
+.join_game_btn {
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-/* Target buttons with the class "create_game_btn" */
-button.create_game_btn, button.join_game_btn {
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 0 auto;
+.create_game_btn:hover,
+.join_game_btn:hover {
+    background-color: #0056b3;
 }
 
-button.create_game_btn:hover, button.join_game_btn:hover {
-  background-color: #0056b3;
+.create_game_btn:active,
+.join_game_btn:active {
+    box-shadow: none;
+    transform: translate(3px, 3px);
 }
 
-button.create_game_btn:active , button.join_game_btn:active {
-  box-shadow: none;
-  transform: translate(3px, 3px);
-}
-
-/* Đổi tên class để phù hợp với quy tắc camelCase của CSS Modules */
 .inputRoomCode {
-  width: 50vw;
-  padding: 10px;
-  margin-right: 20px;
-  border-radius: 10px;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 50vw;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .inputRoomCode:focus,
 .inputRoomCode:hover {
-  outline: none;
-  border-color: rgba(129, 140, 248);
-  background-color: #fff;
-  box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+    outline: none;
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
 }
 
 .roomClass {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* flex-direction: row; */ /* Có thể bỏ qua vì đây là giá trị mặc định */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
-/* Styles for the hostroom and joinroom sections to make them look like a leaderboard */
-.hostroom, .joinroom {
-  background-color: rgba(0, 0, 0, 0.5); /* Background transparency */
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto; /* Centering */
-  width: 75vw;
-  max-width: 500px;
-  max-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.hostroom,
+.joinroom {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Background transparency */
+    padding: 10px;
+    /* border-radius: 10px; */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    /* Centering */
+    width: 375px;
+    max-height: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.hostroom h1,
+.joinroom h1 {
+    color: #fff ;
+}
+.scrollableList {
+    max-height: 150px; /* Adjust height as needed */
+    overflow-y: auto;
+    width: 100%;
 }
 
-.hostroom h2, .joinroom h2 {
-  color: #333; /* Dark grey color */
+.scrollableList ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
 
-ul {
-  list-style-type: none; /* Remove default list style */
-  padding: 0; /* Remove default padding */
+.scrollableList li {
+    padding: 10px;
+    cursor: pointer;
 }
 
-li {
-  font-size: 1.1rem;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for transform and box-shadow */
+.scrollableList li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-li:last-child {
-  border-bottom: none;
+/* Scrollbar styling for WebKit (Chrome, Safari) */
+.scrollableList::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
 }
 
-li:nth-child(odd) {
-  background: #f9f9f9;
+.scrollableList::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2); /* Track background color */
+    border-radius: 10px;
 }
 
-li:hover {
-  background: #e9e9e9;
-  transform: translateY(-5px); /* Slightly raise the item */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for elevation effect */
+.scrollableList::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5); /* Thumb color */
+    border-radius: 10px;
+}
+
+.scrollableList::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7); /* Thumb color on hover */
+}
+
+/* Scrollbar styling for Firefox */
+.scrollableList {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar styling for Edge and IE */
+.scrollableList {
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.scrollableList::-ms-scrollbar {
+    display: none; /* Hide scrollbar for IE and Edge */
 }

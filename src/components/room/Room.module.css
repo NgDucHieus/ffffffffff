@@ -8,6 +8,9 @@
   height: 100vh; /* Full height */
 }
 
+.bg_room h1 {
+  text-align: center;
+}
 
 .leaderboardItem {
   display: flex;
@@ -47,6 +50,8 @@
   /* Adjusted for better positioning within .adminView */
   position: relative;
   margin-right: 10px; /* Adds spacing between buttons */
+  /* Adjust button position to center position */
+  
 }
 
 .shareButton:hover {

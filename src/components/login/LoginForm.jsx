@@ -47,74 +47,76 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <form id="login-form" className={styles.loginForm}>
-        <ProfilePicture />
-        <br />
-        <div className={styles.inputContainer}>
-          <input
-            type="text"
-            placeholder="Username"
-            id="username"
-            name="username"
-            ref={usernameRef}
-            autoComplete="username"
-          />
-        </div>
-        <br />
-        <div className={styles.inputContainer}>
-          <input
-            type={passwordVisible ? "text" : "password"}
-            placeholder="Password"
-            id="password"
-            name="password"
-            ref={passwordRef}
-            onKeyDown={(e) => handleKeyDown(e, handleLoginClick)}
-            autoComplete="current-password"
-          />
+    <div className={styles.container}>
+      <div className={styles.loginContainer}>
+        <form id="login-form" className={styles.loginForm}>
+          <ProfilePicture />
           <br />
-          <a href="#" className={styles.forgotPassword}>
-            Forget Password?
-          </a>
-        </div>
-        <div className={styles.checkboxWrapper}>
-          <label className={styles.checkbox}>
+          <div className={styles.inputContainer}>
             <input
-              type="checkbox"
-              id="remember-me"
-              className={styles.checkboxInput}
-              checked={rememberMe}
-              onChange={handleRememberMeChange}
+              type="text"
+              placeholder="Username"
+              id="username"
+              name="username"
+              ref={usernameRef}
+              autoComplete="username"
             />
-            <span className={styles.checkboxLabel}></span>
-            Remember me
-          </label>
-        </div>
-        <div className={styles.checkboxWrapper}>
-          <label className={styles.checkbox}>
+          </div>
+          <br />
+          <div className={styles.inputContainer}>
             <input
-              type="checkbox"
-              id="show-password"
-              className={styles.checkboxInput}
-              onChange={togglePasswordVisibility}
+              type={passwordVisible ? "text" : "password"}
+              placeholder="Password"
+              id="password"
+              name="password"
+              ref={passwordRef}
+              onKeyDown={(e) => handleKeyDown(e, handleLoginClick)}
+              autoComplete="current-password"
             />
-            <span className={styles.checkboxLabel}></span>
-            Show password
-          </label>
-        </div>
-        <a className={styles.loginButton} onClick={handleLoginClick}>
-          <span className={styles.loginButtonText} id="login-button">
-            Sign In
-          </span>
-        </a>
-        <p className={styles.noAccount}>
-          Don’t have an account yet ?
-          <a onClick={navigateToSignupForm} className={styles.link}>
-            {" "}
-            Sign Up
+            <br />
+            <a href="#" className={styles.forgotPassword}>
+              Forget Password?
+            </a>
+          </div>
+          <div className={styles.checkboxWrapper}>
+            <label className={styles.checkbox}>
+              <input
+                type="checkbox"
+                id="remember-me"
+                className={styles.checkboxInput}
+                checked={rememberMe}
+                onChange={handleRememberMeChange}
+              />
+              <span className={styles.checkboxLabel}></span>
+              Remember me
+            </label>
+          </div>
+          <div className={styles.checkboxWrapper}>
+            <label className={styles.checkbox}>
+              <input
+                type="checkbox"
+                id="show-password"
+                className={styles.checkboxInput}
+                onChange={togglePasswordVisibility}
+              />
+              <span className={styles.checkboxLabel}></span>
+              Show password
+            </label>
+          </div>
+          <a className={styles.loginButton} onClick={handleLoginClick}>
+            <span className={styles.loginButtonText} id="login-button">
+              Sign In
+            </span>
           </a>
-        </p>
-      </form>
+          <p className={styles.noAccount}>
+            Don’t have an account ?
+            <a onClick={navigateToSignupForm} className={styles.link}>
+              {" "}
+              Sign Up
+            </a>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };

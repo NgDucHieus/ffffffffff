@@ -38,7 +38,7 @@ const NavigationComponent = () => {
         onChange={(event, newValue) => {
             setValue(newValue);
         }}
-        showLabels = {false}
+        showLabels = {true}
     >
         <BottomNavigationAction label="Submited List" icon={<PlaylistAddCheckCircleIcon />} component={Link} to="/login" />
         <BottomNavigationAction label="Game" icon={<AddCircleOutlineIcon/>} component={Link} to="/dashboard" />
