@@ -26,11 +26,10 @@ import {
   query,
   addDoc,
   where,
-  onSnapshot,
 } from "firebase/firestore";
 
 import { getAuth } from "firebase/auth";
-
+import { supabase } from '../../supabase';
 const Room = () => {
   const { id } = useParams();
   const [files, setFiles] = useState([]);
@@ -128,55 +127,40 @@ const Room = () => {
   useEffect(() => {
     if (isAdmin) {
       const listUser = collection(db, "rooms", id, "SubmitedUser");
-      const unsubscribe = onSnapshot(listUser, (querySnapshot) => {
+      getDocs(listUser)
+      .then((querySnapshot) => {
         const users = querySnapshot.docs.map((doc) => doc.data());
         setSubmittedUsers(users);
+      })
+      .catch((error) => {
+        console.error("Error fetching submitted users:", error);
       });
-
-      // Cleanup function để hủy đăng ký lắng nghe khi component bị unmount
-      return () => unsubscribe();
     }
   }, [id, isAdmin]);
 
   useEffect(() => {
     if (!isAdmin) {
-      // Real-time fetch images for the room
+      // Fetch images for the room once
       const userImagesRef = collection(db, "rooms", id, "Admin_Images");
-      const unsubscribeImages = onSnapshot(
-        userImagesRef,
-        (querySnapshot) => {
-          const urls = [];
-          querySnapshot.forEach((doc) => {
-            urls.push(doc.data().url); // Assuming 'url' is the correct field
-          });
+      getDocs(userImagesRef)
+        .then((querySnapshot) => {
+          const urls = querySnapshot.docs.map((doc) => doc.data().url); // Assuming 'url' is the correct field
           setUploadedFileURLs(urls);
-        },
-        (error) => {
+        })
+        .catch((error) => {
           console.error("Error fetching user images:", error);
-        }
-      );
-
-      // Real-time fetch job descriptions for the room
+        });
+  
+      // Fetch job descriptions for the room once
       const jobsRef = collection(db, "rooms", id, "jobs");
-      const unsubscribeJobs = onSnapshot(
-        jobsRef,
-        (querySnapshot) => {
-          const jobs = [];
-          querySnapshot.forEach((doc) => {
-            jobs.push(doc.data().job_description); // Assuming 'job_description' is the correct field
-          });
+      getDocs(jobsRef)
+        .then((querySnapshot) => {
+          const jobs = querySnapshot.docs.map((doc) => doc.data().job_description); // Assuming 'job_description' is the correct field
           setJobDescriptions(jobs);
-        },
-        (error) => {
+        })
+        .catch((error) => {
           console.error("Error fetching job descriptions:", error);
-        }
-      );
-
-      // Cleanup function to unsubscribe from the real-time updates when the component unmounts
-      return () => {
-        unsubscribeImages();
-        unsubscribeJobs();
-      };
+        });
     }
   }, [id, isAdmin, setUploadedFileURLs, setJobDescriptions]);
 
